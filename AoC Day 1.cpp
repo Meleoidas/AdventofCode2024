@@ -23,10 +23,14 @@ int main(){
   sort(l1.begin(), l1.end());
   sort(l2.begin(), l2.end());
   
-  int diff = 0;
+  int sum = 0;
   for(int i = 0; i < 1000; i++){
-    diff = diff + abs(l1[i] - l2[i]);
-  }
-  cout<<diff;
+      int c = count(l2.begin(), l2.end(), l1[i]);
+      if(c!=0){
+        sum = sum + l1[i]*c;
+      }
+    }
+
+  cout<<sum;
   inputFile.close();
 }
