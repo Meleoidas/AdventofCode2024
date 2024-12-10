@@ -17,30 +17,11 @@ int main(){
     matrix.push_back(charVector);
   }
 
-  for(int i = 0; i < matrix.size(); i++){
-    for(int j = 0; j < matrix[i].size(); j++){
-      if(j + 3 < matrix[i].size() && matrix[i][j] == 'X' && matrix[i][j+1] == 'M' && matrix[i][j+2] == 'A' && matrix[i][j+3] == 'S'){ // xmas
-        words++;
-      }
-      if(i + 3 < matrix.size() && matrix[i][j] == 'X' && matrix[i+1][j] == 'M' && matrix[i+2][j] == 'A' && matrix[i+3][j] == 'S'){ // down
-        words++;
-      }
-      if(i - 3 >= 0 && matrix[i][j] == 'X' && matrix[i-1][j] == 'M' && matrix[i-2][j] == 'A' && matrix[i-3][j] == 'S'){ // up
-        words++;
-      }
-      if(i + 3 < matrix.size() && j - 3 >= 0 && matrix[i][j] == 'X' && matrix[i+1][j-1] == 'M' && matrix[i+2][j-2] == 'A' && matrix[i+3][j-3] == 'S'){ // down left
-        words++;
-      }
-      if(i + 3 < matrix.size() && j + 3 < matrix[i].size() && matrix[i][j] == 'X' && matrix[i+1][j+1] == 'M' && matrix[i+2][j+2] == 'A' && matrix[i+3][j+3] == 'S'){ // down right
-        words++;
-      }
-      if(i - 3 >= 0 && j - 3 >= 0 && matrix[i][j] == 'X' && matrix[i-1][j-1] == 'M' && matrix[i-2][j-2] == 'A' && matrix[i-3][j-3] == 'S'){ // up left
-        words++;
-      }
-      if(i - 3 >= 0 && j + 3 < matrix[i].size() && matrix[i][j] == 'X' && matrix[i-1][j+1] == 'M' && matrix[i-2][j+2] == 'A' && matrix[i-3][j+3] == 'S'){ // up right
-        words++;
-      }
-      if(j + 3 < matrix[i].size() && matrix[i][j] == 'S' && matrix[i][j+1] == 'A' && matrix[i][j+2] == 'M' && matrix[i][j+3] == 'X'){ // samx
+  for(int i = 1; i < matrix.size() - 1; i++){
+    for(int j = 1; j < matrix[i].size() - 1; j++){
+      if(matrix[i][j] == 'A' &&
+      ((matrix[i-1][j-1] == 'M' && matrix[i+1][j+1] == 'S') || (matrix[i-1][j-1] == 'S' && matrix[i+1][j+1] == 'M')) &&
+      ((matrix[i+1][j-1] == 'M' && matrix[i-1][j+1] == 'S') || (matrix[i+1][j-1] == 'S' && matrix[i-1][j+1] == 'M'))){
         words++;
       }
     }
